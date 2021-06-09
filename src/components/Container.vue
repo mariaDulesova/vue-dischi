@@ -1,6 +1,7 @@
 <template>
     <section >
         <div class="ms-container"> 
+            
             <div class= "disk-container text-center"
             v-for="(disk, index) in disks"
             :key="index">
@@ -45,8 +46,7 @@ export default {
 <style scoped lang="scss">
 
     @import '../style/variables.scss';
-    section{
-        height: 100vh;
+    section {
         display: flex;
         justify-content:center;
         align-items:center;
@@ -55,7 +55,7 @@ export default {
         
 
         .ms-container{
-            width: 70%;
+            width: 80%;
             display: flex;
             justify-content:center;
             align-items:center;
