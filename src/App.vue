@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <!-- Header -->
-    <Header/>
-    <!-- /Header -->
+    <div >
+      <!-- Header -->
+      <Header/>
+      <!-- /Header -->
 
-    <!-- Main -->
-    <Container/>
-    <!-- /Main -->
+      <!-- Main -->
+      <Container />
+       <!-- /Main -->
+    </div>
+    
 
   </div>
 </template>
@@ -16,13 +19,15 @@ import Header from './components/Header'
 import Container from './components/Container'
 
 
+
 export default {
   name: 'App',
   components: {
     Header,
     Container
-   
-  }
+    
+  },
+  
 }
 </script>
 

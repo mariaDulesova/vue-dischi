@@ -1,7 +1,6 @@
 <template>
     <section >
-        <div class="ms-container"> 
-            
+        <div class="ms-container" v-if="!loading">   
             <div class= "disk-container text-center"
             v-for="(disk, index) in disks"
             :key="index">
@@ -9,6 +8,8 @@
                 :item="disk"/>
             </div>    
         </div>
+        <Loader v-else />
+       
         
     </section>
     
@@ -17,17 +18,21 @@
 <script>
 
 import Disk from './Disk';
+import Loader from './Loader';
 import axios from 'axios';
 
 export default {
     name: 'Container',
     components: {
-        Disk
+        Disk,
+        Loader
+
     },
     data: function(){
         return {
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
-            disks: []
+            disks: [],
+            loading: true
         }
     },
     created: function(){
@@ -36,6 +41,10 @@ export default {
             .then(
                 result => {
                     this.disks = result.data.response;
+                    setTimeout(()=> {
+                        this.loading = false;
+                    }, 1000)
+                    
                 }
             )
     }
