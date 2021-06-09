@@ -1,12 +1,12 @@
 <template>
     <section >
-        <div class="container">            
+        <div class="ms-container"> 
             <div class= "disk-container text-center"
             v-for="(disk, index) in disks"
             :key="index">
                 <Disk
                 :item="disk"/>
-            </div>  
+            </div>    
         </div>
         
     </section>
@@ -50,16 +50,19 @@ export default {
         justify-content:center;
         align-items:center;
         background-color: $bg-primary-color;
+        
 
-        .container{
+        .ms-container{
             display: flex;
             justify-content:center;
             align-items:center;
             flex-wrap: wrap;
-            padding: 50px;
+            margin-top: 70px;
+            padding: 50px 0;
+            
 
             .disk-container{
-                width: calc(100% / 5 - 50px);
+                width: calc((100% / 5) - 50px);
                 height: 350px;
                 display:flex;
                 flex-direction:column;
@@ -71,6 +74,12 @@ export default {
             }
         }
     }
+
+    // @media screen and (max-width: 767px) {
+    //     .disk-container{
+    //         width: calc(100% / 2 - 0px);
+    //     }
+    // }
     
 
 </style>

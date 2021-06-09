@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fixed-top">
       <img src="../assets/spotify.png" alt="Logo Spotify">
   </div>
 </template>
@@ -18,10 +18,13 @@ export default {
 
     div {
         background-color: $bg-secondary-color;
+        display: flex;
+        align-items: center;
         
         img{
-            height: 50px;
-            margin: 10px 20px;
+            
+            width: 100px;
+            padding: 10px 20px;
         }
 
     }
