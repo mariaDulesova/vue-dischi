@@ -46,13 +46,16 @@ export default {
 
     @import '../style/variables.scss';
     section{
+        height: 100vh;
         display: flex;
         justify-content:center;
         align-items:center;
         background-color: $bg-primary-color;
         
+        
 
         .ms-container{
+            width: 70%;
             display: flex;
             justify-content:center;
             align-items:center;
@@ -75,11 +78,6 @@ export default {
         }
     }
 
-    // @media screen and (max-width: 767px) {
-    //     .disk-container{
-    //         width: calc(100% / 2 - 0px);
-    //     }
-    // }
     
 
 </style>
