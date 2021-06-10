@@ -1,7 +1,9 @@
 <template>
-    <section >
+    <section class="d-flex">
+        <Select/>
         <div class="ms-container" v-if="!loading">   
-            <div class= "disk-container text-center"
+            
+            <div class= "d-flex disk-container text-center"
             v-for="(disk, index) in disks"
             :key="index">
                 <Disk
@@ -17,6 +19,7 @@
 
 <script>
 
+import Select from'./Select';
 import Disk from './Disk';
 import Loader from './Loader';
 import axios from 'axios';
@@ -25,7 +28,8 @@ export default {
     name: 'Container',
     components: {
         Disk,
-        Loader
+        Loader,
+        Select
 
     },
     data: function(){
@@ -56,12 +60,12 @@ export default {
 
     @import '../style/variables.scss';
     section {
-        display: flex;
+        // display: flex;
+        flex-direction: column;
         justify-content:center;
         align-items:center;
         background-color: $bg-primary-color;
-        
-        
+        padding-top: 100px;
 
         .ms-container{
             width: 80%;
@@ -69,14 +73,12 @@ export default {
             justify-content:center;
             align-items:center;
             flex-wrap: wrap;
-            margin-top: 70px;
-            padding: 50px 0;
+            padding: 10px 0;
             
 
             .disk-container{
                 width: calc((100% / 5) - 50px);
                 height: 350px;
-                display:flex;
                 flex-direction:column;
                 justify-content: flex-start;
                 margin: 20px 10px;
