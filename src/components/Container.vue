@@ -2,6 +2,7 @@
     <section class="d-flex">
         <div>
             <Select
+            :elements="uniqueOptions"
             @performChange = "selectGenre"/>
         </div>
         
@@ -14,9 +15,7 @@
                 :item="disk"/>
             </div>    
         </div>
-        <Loader v-else />
-       
-        
+        <Loader v-else />    
     </section>
     
 </template>
@@ -50,9 +49,9 @@ export default {
         .then(
             result => {
                 this.disks = result.data.response;
-                setTimeout(()=> {
+                //setTimeout(()=> {
                     this.loading = false;
-                }, 1000)
+                //}, 1000)
                     
             }
         )
@@ -64,23 +63,37 @@ export default {
             } else {
                     const newDisks = this.disks.filter(
                     element=>{
-                        return element.genre == this.selectOptionGenre;
+                        return element.genre.includes(this.selectOptionGenre);
                     }
                 );
                 return newDisks;   
-            }
+            }  
+        },
 
-            
+        uniqueOptions:function(){
+            const selectOptions = [];
+
+            this.disks.forEach(
+                element =>{
+                    if (!selectOptions.includes(element.genre)){
+                        selectOptions.push(element.genre)
+                    }
+                }    
+            )
+            return selectOptions;   
         }
     },
 
     methods: {
         selectGenre: function (){
-            this.selectOptionGenre = event.target.value;
-            console.log(this.selectOptionGenre);
-        }
+            
+            if(this.selectOptionGenre =="All"){
+                 return this.disks
+            } else{
+                return this.selectOptionGenre = event.target.value;
+            }
+        }  
     }
-
 }
 </script>
 
@@ -88,37 +101,33 @@ export default {
 
     @import '../style/variables.scss';
     section {
-        // display: flex;
         flex-direction: column;
-        justify-content:center;
+        justify-content:flex-start;
         align-items:center;
         background-color: $bg-primary-color;
-        padding-top: 100px;
-        // height: 100vh;
-        // overflow: scroll;
+        padding-top: 50px;
+        height: calc(100vh - 80px);
+        overflow: auto;
 
         .ms-container{
             width: 80%;
+            height: 100%;
             display: flex;
             justify-content:center;
-            align-items:center;
+            align-items:stretch;
             flex-wrap: wrap;
             padding: 10px 0;
             
 
             .disk-container{
                 width: calc((100% / 5) - 50px);
-                height: 350px;
+                // height: 350px;
                 flex-direction:column;
                 justify-content: flex-start;
                 margin: 20px 10px;
                 padding: 20px;
                 background-color: $bg-secondary-color;
-
             }
         }
     }
-
-    
-
 </style>

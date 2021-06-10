@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-top">
+  <div >
       <img src="../assets/spotify.png" alt="Logo Spotify">
   </div>
 </template>
