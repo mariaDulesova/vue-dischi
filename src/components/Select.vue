@@ -1,17 +1,29 @@
 <template>
-  <select class="form-select w-25" aria-label="Default select example">
+  <select class="form-select" aria-label="Default select example"
+    @change ="$emit('performChange', selectOption)">
     <option selected>All</option>
-    <option value="1">Rock</option>
-    <option value="2">Pop</option>
-    <option value="3">Jazz</option>
-    <option value="3">Metal</option>
+
+    <!-- <option v-for="(item,index) in element" :key="index" :value="element.genre"> {{ element.genre }} </option> -->
+    <option value="Rock">Rock</option>
+    <option value="Pop">Pop</option>
+    <option value="Jazz">Jazz</option>
+    <option value="Metal">Metal</option>
 </select>
 </template>
 
 <script>
 export default {
     name: 'Select',
-    props: ['item'],
+    props: ['element'],
+
+    data: function(){
+        return {
+            selectOption: ""
+        }
+    },
+
+
+   
 
 }
 </script>

@@ -1,10 +1,14 @@
 <template>
     <section class="d-flex">
-        <Select/>
+        <div>
+            <Select
+            @performChange = "selectGenre"/>
+        </div>
+        
         <div class="ms-container" v-if="!loading">   
             
             <div class= "d-flex disk-container text-center"
-            v-for="(disk, index) in disks"
+            v-for="(disk, index) in selectedDisks"
             :key="index">
                 <Disk
                 :item="disk"/>
@@ -36,21 +40,41 @@ export default {
         return {
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
             disks: [],
-            loading: true
+            loading: true,
+            selectOptionGenre: ""
         }
     },
     created: function(){
         axios
-            .get(this.apiUrl)
-            .then(
-                result => {
-                    this.disks = result.data.response;
-                    setTimeout(()=> {
-                        this.loading = false;
-                    }, 1000)
+        .get(this.apiUrl)
+        .then(
+            result => {
+                this.disks = result.data.response;
+                setTimeout(()=> {
+                    this.loading = false;
+                }, 1000)
                     
+            }
+        )
+    },
+    computed: {
+        selectedDisks: function() {
+            console.log(this.disks);
+            const newDisks = this.disks.filter(
+                element=>{
+                    return element.genre == this.selectOptionGenre;
                 }
-            )
+            );
+            return newDisks; 
+            
+        }
+
+    },
+    methods: {
+        selectGenre: function (){
+            this.selectOptionGenre = event.target.value;
+            console.log(this.selectOptionGenre);
+        }
     }
 
 }
@@ -66,6 +90,7 @@ export default {
         align-items:center;
         background-color: $bg-primary-color;
         padding-top: 100px;
+        height: 100vh;
 
         .ms-container{
             width: 80%;
