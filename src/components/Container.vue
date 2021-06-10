@@ -59,17 +59,21 @@ export default {
     },
     computed: {
         selectedDisks: function() {
-            console.log(this.disks);
-            const newDisks = this.disks.filter(
-                element=>{
-                    return element.genre == this.selectOptionGenre;
-                }
-            );
-            return newDisks; 
+            if(this.selectOptionGenre =="All") {
+                return this.disks
+            } else {
+                    const newDisks = this.disks.filter(
+                    element=>{
+                        return element.genre == this.selectOptionGenre;
+                    }
+                );
+                return newDisks;   
+            }
+
             
         }
-
     },
+
     methods: {
         selectGenre: function (){
             this.selectOptionGenre = event.target.value;
@@ -90,7 +94,8 @@ export default {
         align-items:center;
         background-color: $bg-primary-color;
         padding-top: 100px;
-        height: 100vh;
+        // height: 100vh;
+        // overflow: scroll;
 
         .ms-container{
             width: 80%;
