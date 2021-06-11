@@ -1,14 +1,14 @@
 <template>
-    <section class="d-flex">
+    <section class="d-flex flex-column justify-content-start align-items-center">
         <div>
             <Select
             :elements="uniqueOptions"
             @performChange = "selectGenre"/>
         </div>
         
-        <div class="ms-container" v-if="!loading">   
+        <div class="ms-container d-flex justify-content-center align-items-stretch" v-if="!loading">   
             
-            <div class= "d-flex disk-container text-center"
+            <div class= "d-flex flex-column justify-content-start disk-container text-center"
             v-for="(disk, index) in selectedDisks"
             :key="index">
                 <Disk
@@ -101,9 +101,6 @@ export default {
 
     @import '../style/variables.scss';
     section {
-        flex-direction: column;
-        justify-content:flex-start;
-        align-items:center;
         background-color: $bg-primary-color;
         padding-top: 50px;
         height: calc(100vh - 80px);
@@ -112,9 +109,6 @@ export default {
         .ms-container{
             width: 80%;
             height: 100%;
-            display: flex;
-            justify-content:center;
-            align-items:stretch;
             flex-wrap: wrap;
             padding: 10px 0;
             
@@ -122,8 +116,6 @@ export default {
             .disk-container{
                 width: calc((100% / 5) - 50px);
                 // height: 350px;
-                flex-direction:column;
-                justify-content: flex-start;
                 margin: 20px 10px;
                 padding: 20px;
                 background-color: $bg-secondary-color;

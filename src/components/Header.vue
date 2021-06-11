@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="d-flex align-items-center">
       <img src="../assets/spotify.png" alt="Logo Spotify">
   </div>
 </template>
@@ -18,8 +18,6 @@ export default {
 
     div {
         background-color: $bg-secondary-color;
-        display: flex;
-        align-items: center;
         
         img{
             

@@ -33,7 +33,4 @@ export default {
             margin-top: 20px;
             color: $text-paragraph-color;
         }
-    
-
-
 </style>
