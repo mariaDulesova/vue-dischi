@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~@fontsource/open-sans/400.css";
+@import './variables.scss';
 
 
 html{
@@ -7,4 +8,7 @@ html{
 }
 body {
     font-family: "Open Sans";
+    height: 100vh;
+    background-color: $bg-primary-color;
+    
 }

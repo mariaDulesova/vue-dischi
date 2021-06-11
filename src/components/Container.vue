@@ -58,12 +58,12 @@ export default {
     },
     computed: {
         selectedDisks: function() {
-            if(this.selectOptionGenre =="All") {
+            if(this.selectOptionGenre == "") {
                 return this.disks
             } else {
                     const newDisks = this.disks.filter(
                     element=>{
-                        return element.genre.includes(this.selectOptionGenre);
+                        return element.genre == this.selectOptionGenre;
                     }
                 );
                 return newDisks;   
@@ -83,15 +83,9 @@ export default {
             return selectOptions;   
         }
     },
-
     methods: {
-        selectGenre: function (){
-            
-            if(this.selectOptionGenre =="All"){
-                 return this.disks
-            } else{
-                return this.selectOptionGenre = event.target.value;
-            }
+        selectGenre: function (change){
+            return this.selectOptionGenre = change;
         }  
     }
 }
@@ -101,10 +95,10 @@ export default {
 
     @import '../style/variables.scss';
     section {
-        background-color: $bg-primary-color;
+        // background-color: $bg-primary-color;
         padding-top: 50px;
-        height: calc(100vh - 80px);
-        overflow: auto;
+        height: calc(100% - 80px);
+        //overflow: hidden;
 
         .ms-container{
             width: 80%;

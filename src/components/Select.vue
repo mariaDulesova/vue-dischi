@@ -1,7 +1,8 @@
 <template>
   <select class="form-select" aria-label="Default select example"
-    @change ="$emit('performChange')">
-    <option selected>All</option>
+    v-model ="change"
+    @change ="$emit('performChange', change)">
+    <option selected value="">All</option>
     <option v-for="(element,index) in elements" :key="index" :value="element"> {{ element }} </option>
     
 </select>
@@ -11,6 +12,11 @@
 export default {
     name: 'Select',
     props: ['elements'],
+    data:function() {
+      return {
+        change: ''
+      }
+    }
 
 }
 </script>
